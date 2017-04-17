@@ -1,0 +1,23 @@
+{
+  "name": "hki5002_home-project",
+  "version": "1.0.0",
+  "description": "HKI5002",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/priiti/hki5002_home-project.git"
+  },
+  "author": "Priit Parl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/priiti/hki5002_home-project/issues"
+  },
+  "homepage": "https://github.com/priiti/hki5002_home-project#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^1.7.3"
+  }
+}
