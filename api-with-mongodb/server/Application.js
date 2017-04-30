@@ -10,6 +10,12 @@ mongoose.connect('mongodb://localhost:27017/api_data', () => {
 const application = express();
 
 // Middleware
+application.use((request, response, next) => {
+	response.header('Access-Control-Allow-Origin', '*');
+	response.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+	response.header('Access-Control-Allow-Headers', 'Content-Type');
+	next();
+});
 application.use(bodyParser.json());
 application.use('/api', routes);
 
