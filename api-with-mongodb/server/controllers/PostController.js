@@ -27,23 +27,24 @@ postController.post = (request, response) => {
 };
 
 postController.getAll = (request, response) => {
-	db.Post.find({}).populate({
-		path: '_creator',
-		select: 'username createDate-_id'
-	}).populate({
-		path: '_comments',
-		select: 'text _creator',
-		match: { 'isRemoved': false }
-	}).then((posts) => {
-		return response.status(200).json({
-			success: true,
-			data: posts
-		});
-	}).catch((err) => {
-		return response.status(500).json({
-			message: err
-		});
-	});
+	// db.Post.find({}).populate({
+	// 	path: '_creator',
+	// 	select: 'username createDate-_id'
+	// }).populate({
+	// 	path: '_comments',
+	// 	select: 'text _creator',
+	// 	match: { 'isRemoved': false }
+	// }).then((posts) => {
+	// 	return response.status(200).json({
+	// 		success: true,
+	// 		data: posts
+	// 	});
+	// }).catch((err) => {
+	// 	return response.status(500).json({
+	// 		message: err
+	// 	});
+	// });
+	response.render('posts', {title: 'Postitus', message: 'Postituse sisu'});
 };
 
 postController.getOne = (request, response) => {

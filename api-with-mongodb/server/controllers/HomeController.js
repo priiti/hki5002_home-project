@@ -3,7 +3,7 @@ class HomeController {
 	
 	get(request, response) {
 		response.render('index',
-				{message: 'Tere'}
+				{message: 'Tere, oled avalehel'}
 			)
 	}
 }
