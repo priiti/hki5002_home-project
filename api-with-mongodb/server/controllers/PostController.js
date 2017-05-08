@@ -3,7 +3,6 @@ import db from './../models';
 const postController = {};
 
 postController.post = (request, response) => {
-	console.log('tere');
 	const {title, text, link, userId} = request.body;
 
 	// Validation should be done here
@@ -41,7 +40,7 @@ postController.getAll = (request, response) => {
 		// 	success: true,
 		// 	data: posts
 		// });
-		return response.render('posts',{
+		return response.render('posts', {
 			posts: posts
 		})
 	}).catch((err) => {
@@ -49,11 +48,19 @@ postController.getAll = (request, response) => {
 			message: err
 		});
 	});
-	// response.render('posts', {title: 'Postitus', message: 'Postituse sisu'});
 };
 
-postController.getOne = (request, response) => {
-
+postController.getById = (request, response) => {
+	let postId = request.params.postid;
+	db.Post.findOne({_id: postId})
+		.then((singlePost) => {
+			return response.render('single_post.pug', {
+				post: singlePost
+			});
+		})
+		.catch((error) => {
+			throw new Error(error);
+		})
 };
 
 export default postController;

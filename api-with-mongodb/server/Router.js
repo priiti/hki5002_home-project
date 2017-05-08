@@ -11,6 +11,7 @@ const routes = express.Router();
 // Get
 routes.get('/', HomeController.get);
 routes.get('/posts', postController.getAll);
+routes.get('/posts/:postid', postController.getById);
 
 // Post
 routes.post('/signup', userController.post);
@@ -18,6 +19,5 @@ routes.post('/post', postController.post);
 routes.post('/comment', commentController.post);
 
 routes.get('*', NotFound.get);
-
 
 export default routes;
