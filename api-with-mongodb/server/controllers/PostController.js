@@ -1,8 +1,8 @@
 import db from './../models';
 
-const postController = {};
+const PostController = {};
 
-postController.post = (request, response) => {
+PostController.post = (request, response) => {
 	const {title, text, link, userId} = request.body;
 
 	// Validation should be done here
@@ -26,7 +26,7 @@ postController.post = (request, response) => {
 	});
 };
 
-postController.getAll = (request, response) => {
+PostController.getAll = (request, response) => {
 	db.Post.find({}).populate({
 		path: '_creator',
 		select: 'username createDate-_id'
@@ -35,14 +35,18 @@ postController.getAll = (request, response) => {
 		select: 'text _creator',
 		match: { 'isRemoved': false }
 	}).then((posts) => {
-		// If we want to return JSON file
-		// return response.status(200).json({
-		// 	success: true,
-		// 	data: posts
-		// });
-		return response.render('posts', {
-			posts: posts
+		let postData = [];
+		posts.forEach((item) => {
+			let data = {};
+			data.id = item._id;
+			data.title = item.title;
+			data.content = `${item.text.substring(0, 100)}...`;
+			postData.push(data);	
 		})
+		return postData;
+	}).then((postData) => {
+			return response.render('posts', {postData});
+			console.log(postData);
 	}).catch((err) => {
 		return response.status(500).json({
 			message: err
@@ -50,7 +54,7 @@ postController.getAll = (request, response) => {
 	});
 };
 
-postController.getById = (request, response) => {
+PostController.getById = (request, response) => {
 	let postId = request.params.postid;
 	db.Post.findOne({_id: postId})
 		.then((singlePost) => {
@@ -63,4 +67,4 @@ postController.getById = (request, response) => {
 		})
 };
 
-export default postController;
+export default PostController;
