@@ -1,5 +1,6 @@
-html
-	title='Tere'
-	head
-		h1=message
-		a(href='posts') Postitused
+extends layout.pug
+
+block content
+	h1=title
+	p=message
+	a(href='posts') Postitused

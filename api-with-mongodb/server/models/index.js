@@ -5,5 +5,5 @@ import Comment from './Comment';
 export default {
 	User,
 	Post,
-	Comment
+	Comment,
 };

@@ -2,9 +2,11 @@ class HomeController {
 	constructor() {}
 	
 	get(request, response) {
-		response.render('index',
-				{message: 'Tere, oled avalehel'}
-			)
+		return response.render('index', {
+			title: 'Avaleht',
+			message: 'Tere, oled avalehel'
+			}
+		)
 	}
 }
 
