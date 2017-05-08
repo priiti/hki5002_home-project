@@ -3,6 +3,7 @@ import HomeController from './controllers/HomeController';
 import userController from './controllers/UserController';
 import postController from './controllers/PostController';
 import commentController from './controllers/CommentController';
+import AboutController from './controllers/AboutController';
 import NotFound from './controllers/NotFound';
 import path from 'path';
 
@@ -12,6 +13,7 @@ const routes = express.Router();
 routes.get('/', HomeController.get);
 routes.get('/posts', postController.getAll);
 routes.get('/posts/:postid', postController.getById);
+routes.get('/about', AboutController.get);
 
 // Post
 routes.post('/signup', userController.post);
