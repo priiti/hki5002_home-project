@@ -23,6 +23,7 @@ application.use((request, response, next) => {
 });
 
 application.use(bodyParser.json());
+application.use(express.static(path.join(__dirname, '../', 'public')));
 application.use('/', routes);
 
 export default application;
