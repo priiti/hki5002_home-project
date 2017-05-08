@@ -46,4 +46,8 @@ postController.getAll = (request, response) => {
 	});
 };
 
+postController.getOne = (request, response) => {
+
+};
+
 export default postController;

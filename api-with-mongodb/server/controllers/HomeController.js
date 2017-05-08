@@ -1,10 +1,11 @@
-const homeController = {};
+class HomeController {
+	constructor() {}
+	
+	get(request, response) {
+		response.render('index',
+				{message: 'Tere'}
+			)
+	}
+}
 
-homeController.get = (request, response) => {
-	response.json({
-		title: "Avaleht",
-		message: "Oled avalehel!"
-	});
-};
-
-export default homeController;
+export default new HomeController;

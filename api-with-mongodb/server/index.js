@@ -1,7 +1,8 @@
 // index.js is only for running an instance of application
-
 import application from './Application';
 
-application.listen(3000, () => {
-	console.log('http://localhost:3000');
+const PORT = 4000;
+
+application.listen(PORT, () => {
+	console.log(`http://localhost:${PORT}`);
 });

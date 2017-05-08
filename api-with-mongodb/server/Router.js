@@ -1,12 +1,14 @@
 import express from 'express';
-import homeController from './controllers/HomeController';
+import HomeController from './controllers/HomeController';
 import userController from './controllers/UserController';
 import postController from './controllers/PostController';
 import commentController from './controllers/CommentController';
-const routes = express();
+import path from 'path';
+
+const routes = express.Router();
 
 // Get
-routes.get('/', homeController.get);
+routes.get('/', HomeController.get);
 routes.get('/posts', postController.getAll);
 
 // Post
