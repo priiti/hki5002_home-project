@@ -15,7 +15,7 @@ PostController.post = (request, response) => {
 	});
 
 	post.save().then((newPost) => {
-		return response.status(200).json({
+			response.status(200).json({
 			success: true,
 			data: newPost
 		});
@@ -46,7 +46,6 @@ PostController.getAll = (request, response) => {
 		return postData;
 	}).then((postData) => {
 			return response.render('posts', {postData});
-			console.log(postData);
 	}).catch((err) => {
 		return response.status(500).json({
 			message: err
